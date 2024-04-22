@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar produtos</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <div class="container-principal">
+        <header>
+            <div class="main-header">
+
+
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="imagem/logo1.jpg" alt="logo site">
+                    </a>
+                </div>
+
+                <nav class="topo-menu">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="product.html">Produtos</a></li>
+                        <li><a href="stock.html">Estoque</a></li>
+
+                    </ul>
+
+                </nav>
+            </div>
+            <div class="button">
+                <button id="logoutButton">Sair</button>
+            </div>
+        </header>
+
+
+    </div>
+    <div class="main-screen">
+        <div>
+            <nav class="left-menu">
+                <ul>
+                    <li><a href="index.html" title="Página Inicial"><img class="icon-main" src="imagem/home.png"></a>
+                    </li>
+                    <li><a href="product.html" title="Produtos"><img class="icon-main" src="imagem/product.png"></a>
+                    </li>
+                    <li><a href="options.html" title="Alterar produtos"><img class="icon-main"
+                                src="imagem/options.png"></a></li>
+                    <li><a href="stock.html" title="Estoque"><img class="icon-main" src="imagem/stock.png"></a></li>
+                    <li><a href="user.html" title="Novo Usuário"><img class="icon-main" src="imagem/new-user.png"></a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+
+        </div>
+        <div class="option-product">
+            <h1 class="title-form">Correção de produtos</h1>
+
+            <form name="consult_option" id="consult_option">
+
+                <div class="option-consult">
+                    <p class="option-group-code">
+                        <label for="code">Código: </label><br>
+                        <input type="text" id="codeid" placeholder="ABC123" name="code">
+                    </p>
+
+                    <div class="button-search-option">
+                        <button type="button" onclick="consultarProduto()">Consultar</button>
+                    </div>
+
+                </div>
+            </form>
+
+            <form name="crud_option" id="crud_option">
+                <!-- Campos para exibir os dados do produto -->
+                <input type="hidden" id="productId" name="productId">
+                <!-- Campo oculto para armazenar o ID do produto -->
+
+                <!-- Campos para mostrar os dados do produto -->
+                <div class="option-start">
+                    <p class="option-group-product">
+                        <label for="nome">Produto: </label><br>
+                        <input type="text" id="nomeid" placeholder="Ex: Nome do item" required="required" name="nome">
+                    </p>
+                    <p class="option-group-description">
+                        <label for="description">Descrição: </label><br>
+                        <textarea id="description" name="description" placeholder="Descrição do item"
+                            required="required"></textarea>
+                    </p>
+                </div>
+                <div class="option-end">
+                    <p class="option-group-amount">
+                        <label for="amount">Quantidade: </label><br>
+                        <input type="number" pattern="\d+" id="amountid" name="amount">
+                    </p>
+                    <p class="option-group-price">
+                        <label for="price">Valor: </label><br>
+                        <input type="number" id="priceid" step="0.01" min="0" pattern="^\d+(\.\d{1,2})?$"
+                            placeholder="1,00" name="price">
+                    </p>
+                </div>
+
+                <div class="button-crud">
+                    <button type="button" onclick="alterarProduto()">Alterar</button>
+                    <button type="button" onclick="excluirProduto()">Excluir</button>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function consultarProduto() {
+            var code = $('#codeid').val();
+
+            $.ajax({
+                type: 'POST',
+                url: 'php/consultar_produto.php',
+                data: { code: code },
+                success: function (response) {
+                    var produto = JSON.parse(response);
+
+                    // Preencher os campos do formulário com os dados do produto retornado
+                    $('#productId').val(produto.id);
+                    $('#nomeid').val(produto.nome);
+                    $('#description').val(produto.description);
+                    $('#amountid').val(produto.amount);
+                    $('#priceid').val(produto.price);
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+
+        function alterarProduto() {
+            var productId = $('#productId').val();
+            var nome = $('#nomeid').val();
+            var description = $('#description').val();
+            var amount = $('#amountid').val();
+            var price = $('#priceid').val();
+
+            // Dados a serem enviados para o PHP para a operação de alteração
+            var data = {
+                productId: productId,
+                nome: nome,
+                description: description,
+                amount: amount,
+                price: price
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: 'php/alterar_produto.php', // Arquivo PHP para alterar o produto
+                data: data,
+                success: function (response) {
+                    // Mensagem de feedback para o usuário ou outra ação necessária
+                    console.log(response);
+
+                    // Limpar os campos do formulário após o sucesso
+                    $('#crud_option')[0].reset();
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+
+        function excluirProduto() {
+            var productId = $('#productId').val();
+
+            // Dados a serem enviados para o PHP para a operação de exclusão
+            var data = {
+                productId: productId
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: 'php/excluir_produto.php', // Arquivo PHP para excluir o produto
+                data: data,
+                success: function (response) {
+                    // Mensagem de feedback para o usuário ou outra ação necessária
+                    console.log(response);
+                    // Limpar os campos do formulário após o sucesso
+                    $('#crud_option')[0].reset();
+                    $('#consult_option')[0].reset();
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Seu código JavaScript existente
+
+            // Adiciona um evento de clique ao botão de logout
+            document.getElementById('logoutButton').addEventListener('click', function () {
+                // Faz uma solicitação ao servidor para encerrar a sessão PHP
+                fetch('php/logout.php', {
+                    method: 'POST',
+                })
+                    .then(function (response) {
+                        // Redireciona para a página de login após logout
+                        window.location.href = 'login.html'; // Altere para o seu arquivo de login
+                    })
+                    .catch(function (error) {
+                        console.error('Erro ao efetuar logout:', error);
+                    });
+            });
+
+            // Seu código JavaScript existente
+        });
+    </script>
+
+</body>
+<footer>
+    <div class="footer-text">
+        <h3>© Copyright <u>ÉDO Sistema</u> - All Rights Reserved</h3>
+        <p>Designed by ....</p>
+    </div>
+
+</footer>
+
+</html>

@@ -1,0 +1,931 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*---------------------------------------------------------------------------------------------------------------*/
+
+/*definindo o estilo da pagina de login*/
+
+body {
+    background-color: #fff;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#login-main {
+    font-size: medium;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    background-color: #F7F7F7;
+}
+
+#login-left {
+    flex: 1;
+    align-items: center;
+}
+
+#login-left img {
+    width: 70%;
+    max-width: 100%;
+    margin: 25%;
+}
+
+#login-right {
+    flex: 1;
+    margin: 10%;
+    align-items: center;
+}
+
+#container-login {
+    background-color: #615f5f1c;
+    border-radius: 5px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-top: 3%;
+}
+
+#container-login h2 {
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+#container-login label {
+
+    align-items: center;
+    text-decoration: double;
+    font-size: 150%;
+    margin-top: 2%;
+}
+
+#img-user {
+    width: 5%;
+    height: auto;
+    margin-left: 5%;
+
+}
+
+#container-login input {
+    display: block;
+    width: 100%;
+    max-width: 90%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #000;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #ffffff;
+    background-clip: padding-box;
+    border: 0.5px solid #000;
+    border-radius: 4px;
+    transition: border-color 0.3s ease-in-out;
+
+    &:focus {
+        border-color: #9b9a9e;
+        border-width: 1px;
+        box-shadow: 0 0 0 5px #56EFB9;
+    }
+}
+
+.button {
+    margin-top: 4%;
+    margin-bottom: 4%;
+    display: flex;
+    justify-content: center;
+}
+
+.button :hover {
+    background-color: #56EFB9;
+    color: #000;
+}
+
+.button button {
+    background-color: #9b9a9e;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    width: 100px;
+    height: 50px;
+    font-size: larger;
+}
+
+.button button a {
+    color: #ffffff;
+}
+
+#login-right li {
+    font-weight: bold;
+
+    border: none;
+    list-style: none;
+}
+
+#login-right li a {
+    text-decoration: underline;
+    color: #000;
+}
+
+#login-right li a:hover {
+    color: #fff;
+    background-color: #9b9a9e;
+    border-radius: 2px;
+}
+
+/*---------------------------------------------------------------------------------------------------------------*/
+
+/*estilo do rodapé*/
+footer {
+    position: relative;
+    margin: 0;
+    background-color: #9b9a9e;
+    color: #fff;
+    font-family: 'verdana';
+    padding: 10px;
+}
+
+footer .footer-text {
+    width: 100%;
+    margin: 0;
+    position: relative;
+    float: initial;
+}
+
+footer .footer-text h3 {
+    color: #fff;
+    font-size: small;
+    text-align: center;
+}
+
+footer .footer-text p {
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
+}
+
+/*---------------------------------------------------------------------------------------------------------------*/
+
+header {
+    width: 100%;
+    height: 100px;
+    background: #F7F7F7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #979797;
+}
+
+.main-header {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.logo img {
+    width: 35%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.topo-menu {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 10%;
+}
+
+.topo-menu ul {
+    list-style: none;
+    display: flex;
+
+}
+
+.topo-menu ul li {
+    margin: 0 0.8em;
+    font-size: 1.5em;
+    font-family: 'verdana';
+}
+
+.topo-menu ul li a {
+    text-decoration: none;
+    color: #979797;
+}
+
+.topo-menu ul li a:hover {
+    color: #56EFB9;
+}
+
+.main-screen {
+    display: flex;
+    flex-direction: row;
+}
+
+.left-menu {
+    width: 150px;
+    background-color: #F7F7F7;
+    color: #979797;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 100%;
+    overflow-y: auto;
+    min-height: 100vh;
+
+}
+
+.left-menu ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: auto;
+}
+
+.left-menu li {
+    padding: 10px;
+}
+
+.left-menu a :hover {
+    background-color: #56EFB9;
+    border-radius: 25%;
+}
+
+.icon-main {
+    width: auto;
+    height: auto;
+    margin-left: 25%;
+}
+
+.dashboard {
+    width: 100%;
+    background-color: #fff;
+    height: 50%;
+}
+
+.title-dashboard {
+    text-align: center;
+    background-color: #56EFB9;
+    line-height: 3;
+    border-bottom: 4px #979797;
+
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+
+}
+
+.card {
+    width: 25%;
+    height: 300px;
+    border: 1px;
+    border-radius: 5px;
+    background-color: #fff;
+    border-top: 50%;
+    border: 2px solid #979797;
+}
+
+.card-title {
+    border-bottom: 1px solid #979797;
+    height: 40%;
+    background-color: #56EFB9;
+    display: flex;
+    align-items: center;
+}
+
+.card-title h1 {
+    text-align: center;
+    width: 100%;
+    /* Garante que o texto ocupa 100% da largura */
+    color: #000;
+}
+
+.results{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin: 20px;
+}
+
+.results h1{
+    text-align: center;
+    width: 100%;
+    font-size: 300%;
+}
+
+/*-----------------------------------------------------------------------------------------*/
+
+/*definir as propriedades do romulario de produtos*/
+.title-form {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 18%;
+    color: #737373;
+}
+
+.form-product {
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #979797;
+    height: 50%;
+}
+
+.form-product form {
+    width: 50%;
+    position: relative;
+    float: left;
+    background-color: #fff;
+    padding: 2%;
+    min-height: 400px;
+}
+
+.form-start {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.form-end {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.form-group-product {
+    width: 68%;
+}
+
+.form-group-code {
+    width: 30%;
+}
+
+.form-group-amount {
+    width: 40%;
+}
+
+.form-group-price {
+    width: 40%;
+}
+
+.form-product form label {
+    font-weight: bold;
+    color: #737373;
+}
+
+.form-product form input {
+    max-width: 100%;
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: solid #979797 1px;
+    border-radius: 5px;
+    padding-left: 1%;
+
+    &:focus {
+        border-color: #9b9a9e;
+        border-width: 1px;
+        box-shadow: 0 0 0 5px #56EFB9;
+    }
+
+}
+
+.form-product form textarea {
+    max-width: 100%;
+    width: 99.5%;
+    min-height: 100px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: solid #979797 1px;
+    border-radius: 5px;
+    padding-left: 1%;
+
+
+    &:focus {
+        border-color: #9b9a9e;
+        border-width: 1px;
+        box-shadow: 0 0 0 5px #56EFB9;
+    }
+}
+
+/*-----------------------------------------------------------------------------------------*/
+
+/*Defiir as propriedades do Estoque*/
+
+.panel-stock {
+    width: 100%;
+    background-color: #fff;
+    height: 50%;
+}
+
+.title-stock {
+    text-align: center;
+    background-color: #56EFB9;
+    line-height: 3;
+
+}
+
+.filter form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid #979797;
+    border-top: 1px solid #979797;
+    margin-bottom: 20px;
+}
+
+.button-search button {
+    background-color: #9b9a9e;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    font-size: larger;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.button-search :hover {
+    background-color: #56EFB9;
+    color: #000;
+}
+
+.button-search button a {
+    color: #ffffff;
+}
+
+.filter form p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.filter form p label {
+    font-weight: bold;
+    color: #737373;
+}
+
+.filter form p input {
+    margin-top: 5px;
+    border-radius: 5px;
+
+    &:focus {
+        border-color: #9b9a9e;
+        border-width: 1px;
+        box-shadow: 0 0 0 5px #56EFB9;
+    }
+}
+
+.filter form p select {
+    margin-top: 5px;
+    border-radius: 5px;
+
+    &:focus {
+        border-color: #9b9a9e;
+        border-width: 1px;
+        box-shadow: 0 0 0 5px #56EFB9;
+
+    }
+}
+
+/*-----------------------------------------------------------------------------------------*/
+/* Estilos gerais da tabela */
+
+table {
+    width: 95%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-left: 2%;
+
+}
+
+
+thead {
+    background-color: #56EFB9;
+    color: #000;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #979797;
+}
+
+
+tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+
+tbody tr:hover {
+    background-color: #56EFB9;
+}
+
+/*-------------------------------------------------------------------------------------------*/
+/*Tela de correção de produtos*/
+
+.option-product {
+    width: 100%;
+    background-color: #fff;
+
+    height: 50%;
+}
+
+.option-product form {
+    display: contents;
+    flex-direction: column;
+    width: 100%;
+    background-color: #fff;
+    padding: 2%;
+    min-height: 400px;
+}
+
+.option-consult {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid #979797;
+    padding: 5px;
+}
+
+.option-group-code {
+    width: 30%;
+}
+
+.button-search-option button {
+    background-color: #9b9a9e;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    font-size: larger;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.button-search-option :hover {
+    background-color: #56EFB9;
+    color: #000;
+}
+
+.button-search-option button a {
+    color: #ffffff;
+}
+
+.option-start {
+    display: flex;
+    flex-direction: column;
+    width: 49%;
+    padding: 10px;
+}
+
+.option-end {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.option-group-product {
+    width: 100%;
+}
+
+
+
+.option-group-amount {
+    width: 40%;
+}
+
+.option-group-price {
+    width: 40%;
+}
+
+.option-product form label {
+    font-weight: bold;
+    color: #737373;
+}
+
+.option-product form input {
+    max-width: 100%;
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: solid #979797 1px;
+    border-radius: 5px;
+    padding-left: 1%;
+
+    &:focus {
+        border-color: #9b9a9e;
+        border-width: 1px;
+        box-shadow: 0 0 0 5px #56EFB9;
+    }
+
+}
+
+.option-product form textarea {
+    max-width: 100%;
+    width: 100%;
+    min-height: 100px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: solid #979797 1px;
+    border-radius: 5px;
+    padding-left: 1%;
+
+
+    &:focus {
+        border-color: #9b9a9e;
+        border-width: 1px;
+        box-shadow: 0 0 0 5px #56EFB9;
+    }
+}
+
+.button-crud {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+
+.button-crud button {
+    background-color: #9b9a9e;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    font-size: larger;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.button-crud :hover {
+    background-color: #56EFB9;
+    color: #000;
+}
+
+.button-crud button a {
+    color: #ffffff;
+}
+
+/*-------------------------------------------------------------------------------------------*/
+/*Tela de Cadastro de usuario*/
+
+.register-option {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 10%;
+    width: 30%;
+    margin-top: 2%;
+    border-bottom: 1px solid #9b9a9e;
+}
+
+.button-register {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-right: 10px;
+    margin-bottom: 40px;
+}
+
+.button-register button {
+    background-color: #9b9a9e;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    width: 150px;
+    height: 70px;
+    font-size: larger;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 15%;
+    margin-right: 20px;
+}
+
+.button-register :hover {
+    background-color: #56EFB9;
+    color: #000;
+}
+
+.button-register button a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/*-------------------------------------------------------------------------------------------*/
+
+.crud-user {
+    position: fixed;
+    font-family: 'verdana';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #9b9a9e7a;
+    z-index: 9999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+    display: none;
+}
+
+.crud-user h1 {
+    text-align: center;
+    color: #737373;
+    line-height: 2;
+    
+}
+
+.crud-user:target {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.crud-user div {
+    width: 600px;
+    position: relative;
+    margin: 2% auto;
+    padding: 5 px 20px 5px 20px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.close {
+    background-color: #9b9a9e;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+}
+
+.close:hover {
+    background-color: #56EFB9;
+}
+
+.button-user {
+    display: flex;
+    justify-content: space-around;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.button-user button {
+    background-color: #9b9a9e;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+    font-size: medium;
+    margin-bottom: 15px;
+
+}
+
+.button-user :hover {
+    background-color: #56EFB9;
+    color: #000;
+}
+
+.button-user button a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.new-user p{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 0%;
+}
+
+.new-user label {
+    font-weight: bold;
+    color: #737373;
+}
+
+.new-user input {
+    max-width: 100%;
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: solid #979797 1px;
+    border-radius: 5px;
+    padding-left: 1%;
+
+    &:focus {
+        border-color: #9b9a9e;
+        border-width: 1px;
+        box-shadow: 0 0 0 5px #56EFB9;
+    }
+
+}
+
+.consult-user{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-bottom: 1px solid #737373;
+    border-radius: none;
+}
+
+.consult-user p{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1%;
+    font-weight: bold;
+    color: #737373;
+}
+
+.consult-user input {
+    max-width: 100%;
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: solid #979797 1px;
+    border-radius: 5px;
+    padding-left: 21%;
+
+    &:focus {
+        border-color: #9b9a9e;
+        border-width: 1px;
+        box-shadow: 0 0 0 5px #56EFB9;
+    }
+
+}
+
+.button-consult {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-consult button {
+    background-color: #9b9a9e;
+    color: #ffffff;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    width: 80px;
+    height: 40px;
+    font-size: medium;    
+}
+
+.button-consult :hover {
+    background-color: #56EFB9;
+    color: #000;
+}
+
+.button-consult button a {
+    color: #ffffff;
+    text-decoration: none;
+}

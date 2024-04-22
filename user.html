@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastros de usuário</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <div class="container-principal">
+        <header>
+            <div class="main-header">
+
+
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="imagem/logo1.jpg" alt="logo site">
+                    </a>
+                </div>
+
+                <nav class="topo-menu">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="product.html">Produtos</a></li>
+                        <li><a href="stock.html">Estoque</a></li>
+
+                    </ul>
+
+                </nav>
+            </div>
+            <div class="button">
+                <button id="logoutButton">Sair</button>
+            </div>
+        </header>
+
+
+    </div>
+    <div class="main-screen">
+        <div>
+            <nav class="left-menu">
+                <ul>
+                    <li><a href="index.html" title="Página Inicial"><img class="icon-main" src="imagem/home.png"></a>
+                    </li>
+                    <li><a href="product.html" title="Produtos"><img class="icon-main" src="imagem/product.png"></a>
+                    </li>
+                    <li><a href="options.html" title="Alterar produtos"><img class="icon-main"
+                                src="imagem/options.png"></a></li>
+                    <li><a href="stock.html" title="Estoque"><img class="icon-main" src="imagem/stock.png"></a></li>
+                    <li><a href="user.html" title="Novo Usuário"><img class="icon-main" src="imagem/new-user.png"></a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+
+        <div class="register-option">
+            <div class="button-register">
+                <button type="button"><a href="#new-register">Novo Usuário</a></button>
+                <button type="button"><a href="#delete-user">Alterar/Excluir Usuário</a></button>
+
+            </div>
+        </div>
+
+        <div id="new-register" class="crud-user">
+            <div>
+                <a href="#close" title="Close" class="close"> X </a>
+                <h1>Cadastro de novo usuário</h1>
+                <form id="new-user" class="new-user">
+                    <p class="user-group">
+                        <label for="nomeid">Nome: </label><br>
+                        <input type="text" id="nomeid" placeholder="Ex: Nome do usuário" required="required"
+                            name="txtNome">
+                    </p>
+
+                    <p class="user-group">
+                        <label for="cpf">CPF: </label><br>
+                        <input type="text" id="cpf" placeholder="Ex: 123.456.789-01" required="required" name="txtCpf">
+                    </p>
+
+                    <p class="user-group">
+                        <label for="email">Email: </label><br>
+                        <input type="email" id="email" placeholder="Ex: usuario@example.com" required="required"
+                            name="txtEmail">
+                    </p>
+
+                    <p class="user-group">
+                        <label for="telefone">Telefone: </label><br>
+                        <input type="tel" id="telefone" placeholder="Ex: (11) 98765-4321" required="required"
+                            name="txtTelefone">
+                    </p>
+
+                    <p class="user-group">
+                        <label for="senha">Senha: </label><br>
+                        <input type="password" id="senha" placeholder="Digite sua senha" required="required"
+                            name="txtSenha">
+                    </p>
+
+
+                    <div id="mensagem"> </div>
+
+                    <div class="button-user">
+                        <button type="submit" form="new-user">Gravar</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+        <div id="delete-user" class="crud-user">
+            <div>
+                <a href="#close" title="Close" class="close"> X </a>
+                <h1>Alterar ou Excluir usuário</h1>
+
+                <div class="consult-user">
+                    <p class="user-group">
+                        <label for="consult_cpf">CPF: </label><br>
+                        <input type="text" id="consult_cpf" placeholder="Ex: 123.456.789-01" required="required"
+                            name="consult_cpf">
+                    </p>
+                    <div class="button-consult">
+                        <button id="consultar-cpf" type="button">Consultar</button>
+                    </div>
+
+
+                </div>
+                <form id="alterar-user" class="new-user">
+                    <p class="user-group">
+                        <label for="consult_nomeid">Nome: </label><br>
+                        <input type="text" id="consult_nomeid" placeholder="Ex: Nome do usuário" required="required"
+                            name="consult_nomeid">
+                    </p>
+
+                    <p class="user-group">
+                        <label for="consult_email">Email: </label><br>
+                        <input type="email" id="consult_email" placeholder="Ex: usuario@example.com" required="required"
+                            name="consult_email">
+                    </p>
+
+                    <p class="user-group">
+                        <label for="consult_telefone">Telefone: </label><br>
+                        <input type="tel" id="consult_telefone" placeholder="Ex: (11) 98765-4321" required="required"
+                            name="consult_telefone">
+                    </p>
+
+                    <p class="user-group">
+                        <label for="consult_senha">Senha: </label><br>
+                        <input type="text" id="consult_senha" placeholder="Digite sua senha" required="required"
+                            name="consult_senha">
+                    </p>
+
+
+                    <div class="button-user">
+                        <button id="alterar-cadastro" type="submit">Gravar</button>
+                        <button id="excluir-user" type="submit">Excluir</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#new-user').submit(function (event) {
+                event.preventDefault(); // Evita o comportamento padrão do formulário
+
+                // Obtém os dados do formulário
+                var formData = {
+                    txtNome: $('#nomeid').val(),
+                    txtCpf: $('#cpf').val(),
+                    txtEmail: $('#email').val(),
+                    txtTelefone: $('#telefone').val(),
+                    txtSenha: $('#senha').val()
+                };
+
+                // Envia os dados para o PHP via AJAX
+                $.ajax({
+                    type: 'POST',
+                    url: 'php/inserir_usuario.php', // Arquivo PHP para inserção de usuário
+                    data: formData,
+                    success: function (response) {
+                        // Mensagem de feedback para o usuário ou outra ação necessária
+                        alert(response);
+                        // Limpa os campos do formulário após o sucesso
+                        $('#new-user')[0].reset();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+
+
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Consultar usuário pelo CPF
+            $('#consultar-cpf').click(function (event) {
+                event.preventDefault(); // Evita o comportamento padrão do botão
+
+                var cpf = $('#consult_cpf').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'php/consultar_usuario.php', // Arquivo PHP para consulta de usuário
+                    data: { cpf: cpf },
+                    dataType: 'json', // Define o tipo de dados esperado como JSON
+                    success: function (response) {
+                        // Preenche os campos do formulário com os dados do usuário encontrado
+                        $('#consult_nomeid').val(response.nome);
+                        $('#consult_email').val(response.email);
+                        $('#consult_telefone').val(response.telefone);
+                        $('#consult_senha').val(response.senha);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+
+            // Alterar usuário
+            $('#alterar-cadastro').click(function (event) {
+                event.preventDefault(); // Evita o comportamento padrão do botão
+
+                var formData = {
+                    nome: $('#consult_nomeid').val(),
+                    email: $('#consult_email').val(),
+                    telefone: $('#consult_telefone').val(),
+                    senha: $('#consult_senha').val(),
+                    cpf: $('#consult_cpf').val() // Adiciona também o CPF para identificar o usuário
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'php/atualizar_usuario.php', // Arquivo PHP para atualização de usuário
+                    data: formData,
+                    success: function (response) {
+                        // Exibe uma mensagem ou realiza outra ação após a alteração
+                        alert(response);
+                        // Limpar os campos do formulário após o sucesso
+                        $('#alterar-user')[0].reset();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+
+            // Excluir usuário
+            $('#excluir-user').click(function (event) {
+                event.preventDefault(); // Evita o comportamento padrão do botão
+
+                var cpf = $('#consult_cpf').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'php/excluir_usuario.php', // Arquivo PHP para exclusão de usuário
+                    data: { cpf: cpf },
+                    success: function (response) {
+                        // Exibe uma mensagem ou realiza outra ação após a exclusão
+                        alert(response);
+                        // Limpa os campos do formulário após a exclusão
+                        $('#consult_cpf').val('');
+                        $('#consult_nomeid').val('');
+                        $('#consult_email').val('');
+                        $('#consult_telefone').val('');
+                        $('#consult_senha').val('');
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Seu código JavaScript existente
+
+            // Adiciona um evento de clique ao botão de logout
+            document.getElementById('logoutButton').addEventListener('click', function () {
+                // Faz uma solicitação ao servidor para encerrar a sessão PHP
+                fetch('php/logout.php', {
+                    method: 'POST',
+                })
+                    .then(function (response) {
+                        // Redireciona para a página de login após logout
+                        window.location.href = 'login.html'; // Altere para o seu arquivo de login
+                    })
+                    .catch(function (error) {
+                        console.error('Erro ao efetuar logout:', error);
+                    });
+            });
+
+            // Seu código JavaScript existente
+        });
+    </script>
+
+</body>
+<footer>
+    <div class="footer-text">
+        <h3>© Copyright <u>ÉDO Sistema</u> - All Rights Reserved</h3>
+        <p>Designed by ....</p>
+    </div>
+
+</footer>
+
+</html>

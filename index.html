@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <div class="container-principal">
+        <header>
+            <div class="main-header">
+
+
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="imagem/logo1.jpg" alt="logo site">
+                    </a>
+                </div>
+
+                <nav class="topo-menu">
+                    <ul>
+                        <li><a href="#topo">Home</a></li>
+                        <li><a href="product.html">Produtos</a></li>
+                        <li><a href="stock.html">Estoque</a></li>
+
+                    </ul>
+
+                </nav>
+            </div>
+            <div class="button">
+                <button id="logoutButton">Sair</button>
+            </div>
+        </header>
+
+    </div>
+    <div class="main-screen">
+        <div>
+            <nav class="left-menu">
+                <ul>
+                    <li><a href="index.html" title="Página Inicial"><img class="icon-main" src="imagem/home.png"></a>
+                    </li>
+                    <li><a href="product.html" title="Produtos"><img class="icon-main" src="imagem/product.png"></a>
+                    </li>
+                    <li><a href="options.html" title="Alterar produtos"><img class="icon-main"
+                                src="imagem/options.png"></a></li>
+                    <li><a href="stock.html" title="Estoque"><img class="icon-main" src="imagem/stock.png"></a></li>
+                    <li><a href="user.html" title="Novo Usuário"><img class="icon-main" src="imagem/new-user.png"></a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+
+        </div>
+        <div class="dashboard">
+            <h1 class="title-dashboard">DASHBOARD<br></h1><br>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-title" id="card1">
+                        <h1>QTD de Produtos em estoque</h1><br>
+
+                    </div>
+                    <div class="results">
+                        <h1 id="result1"></h1>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title" id="card2">
+                        <h1>QTD de Itens em estoque</h1><br>
+                    </div>
+                    <div class="results">
+                        <h1 id="result2"></h1>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title" id="card3">
+                        <h1>Valor em estoque</h1><br>
+                    </div>
+                    <div class="results">
+                        <h1 id="result3"></h1>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Função para buscar e exibir a quantidade de produtos em estoque
+            $.ajax({
+                type: 'GET',
+                url: 'php/consulte_qtd_produtos.php',
+                success: function (response) {
+                    $('#result1').text(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+
+            // Função para buscar e exibir a quantidade total de itens em estoque
+            $.ajax({
+                type: 'GET',
+                url: 'php/consulte_qtd_itens.php',
+                success: function (response) {
+                    $('#result2').text(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+
+            // Função para buscar e exibir o valor total em estoque
+            $.ajax({
+                type: 'GET',
+                url: 'php/consultar_valor_estoque.php',
+                success: function (response) {
+                    $('#result3').text('R$ ' + response);
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Seu código JavaScript existente
+
+            // Adiciona um evento de clique ao botão de logout
+            document.getElementById('logoutButton').addEventListener('click', function () {
+                // Faz uma solicitação ao servidor para encerrar a sessão PHP
+                fetch('php/logout.php', {
+                    method: 'POST',
+                })
+                    .then(function (response) {
+                        // Redireciona para a página de login após logout
+                        window.location.href = 'login.html'; // Altere para o seu arquivo de login
+                    })
+                    .catch(function (error) {
+                        console.error('Erro ao efetuar logout:', error);
+                    });
+            });
+
+            // Seu código JavaScript existente
+        });
+    </script>
+</body>
+<footer>
+    <div class="footer-text">
+        <h3>© Copyright <u>ÉDO Sistema</u> - All Rights Reserved</h3>
+        <p>Designed by ....</p>
+    </div>
+
+</footer>
+
+</html>

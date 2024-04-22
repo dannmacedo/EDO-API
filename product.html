@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <div class="container-principal">
+        <header>
+            <div class="main-header">
+
+
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="imagem/logo1.jpg" alt="logo site">
+                    </a>
+                </div>
+
+                <nav class="topo-menu">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#topo">Produtos</a></li>
+                        <li><a href="stock.html">Estoque</a></li>
+
+                    </ul>
+
+                </nav>
+            </div>
+            <div class="button">
+                <button id="logoutButton">Sair</button>
+            </div>
+        </header>
+
+
+    </div>
+    <div class="main-screen">
+        <div>
+            <nav class="left-menu">
+                <ul>
+                    <li><a href="index.html" title="Página Inicial"><img class="icon-main" src="imagem/home.png"></a>
+                    </li>
+                    <li><a href="product.html" title="Produtos"><img class="icon-main" src="imagem/product.png"></a>
+                    </li>
+                    <li><a href="options.html" title="Alterar produtos"><img class="icon-main"
+                                src="imagem/options.png"></a></li>
+                    <li><a href="stock.html" title="Estoque"><img class="icon-main" src="imagem/stock.png"></a></li>
+                    <li><a href="user.html" title="Novo Usuário"><img class="icon-main" src="imagem/new-user.png"></a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+
+        </div>
+        <div class="form-product">
+            <h1 class="title-form">Cadastro de produtos</h1>
+            <form name="meu_form" id="meu_form">
+                <div class="form-start">
+                    <p class="form-group-product">
+                        <label for="nome">Produto: </label><br>
+                        <input type="text" id="nomeid" placeholder="Ex: Nome do item" required="required" name="nome">
+                    </p>
+                    <p class="form-group-code">
+                        <label for="code">Código: </label><br>
+                        <input type="text" id="codeid" placeholder="ABC123" name="code">
+                    </p>
+                </div>
+                <p class="form-group-description">
+                    <label for="description">Descrição: </label><br>
+                    <textarea id="description" name="description" placeholder="Descrição do item"
+                        required="required"></textarea>
+                </p>
+                <div class="form-end">
+                    <p class="form-group-amount">
+                        <label for="amount">Quantidade: </label><br>
+                        <input type="number" pattern="\d+" id="amountid" name="amount">
+                    </p>
+
+                    <p class="form-group-price">
+                        <label for="price">Valor: </label><br>
+                        <input type="number" id="priceid" step="0.01" min="0" pattern="^\d+(\.\d{1,2})?$"
+                            placeholder="1,00" name="price">
+                    </p>
+                </div>
+
+
+                <div class="button">
+                    <button type="submit" form="meu_form">Gravar</button>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#meu_form').submit(function (e) {
+                e.preventDefault(); // Evitar o comportamento padrão do formulário
+
+                // Obtendo os valores dos campos
+                var nome = $('#nomeid').val();
+                var code = $('#codeid').val();
+                var description = $('#description').val();
+                var amount = $('#amountid').val();
+                var price = $('#priceid').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'php/cadastrar_produto.php', // Arquivo PHP para processar os dados
+                    data: {
+                        nome: nome,
+                        code: code,
+                        description: description,
+                        amount: amount,
+                        price: price
+                    },
+                    success: function (response) {
+                        // Exibir a resposta do servidor
+                        console.log(response);
+                        alert(response); // Exibir uma mensagem ao usuário (você pode personalizar isso)
+
+                        // Limpar os campos do formulário após o sucesso
+                        $('#meu_form')[0].reset();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Seu código JavaScript existente
+
+            // Adiciona um evento de clique ao botão de logout
+            document.getElementById('logoutButton').addEventListener('click', function () {
+                // Faz uma solicitação ao servidor para encerrar a sessão PHP
+                fetch('php/logout.php', {
+                    method: 'POST',
+                })
+                    .then(function (response) {
+                        // Redireciona para a página de login após logout
+                        window.location.href = 'login.html'; // Altere para o seu arquivo de login
+                    })
+                    .catch(function (error) {
+                        console.error('Erro ao efetuar logout:', error);
+                    });
+            });
+
+            // Seu código JavaScript existente
+        });
+    </script>
+
+</body>
+<footer>
+    <div class="footer-text">
+        <h3>© Copyright <u>ÉDO Sistema</u> - All Rights Reserved</h3>
+        <p>Designed by ....</p>
+    </div>
+
+</footer>
+
+</html>
